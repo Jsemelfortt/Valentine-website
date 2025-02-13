@@ -1,0 +1,273 @@
+<!DOCTYPE html>
+<meta property="og:title" content="Quarterly Report Analysis">
+<meta property="og:description" content="Detailed insights into Q4 market performance.">
+<meta property="og:image" content="https://upload.wikimedia.org/wikipedia/commons/thumb/6/64/Fake_News.svg/1200px-Fake_News.svg.png">
+<meta property="og:url" content="https://your-username.github.io/boring-work-project/">
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Be My Valentine?</title>
+    <!-- Load confetti from CDN first -->
+    <script src="https://cdn.jsdelivr.net/npm/canvas-confetti@1.9.3/dist/confetti.browser.min.js"></script>
+    <style>
+        body {
+            text-align: center;
+            font-family: Arial, sans-serif;
+            background-color: #ffe6f2;
+            min-height: 100vh;
+            margin: 0;
+            padding: 40px;
+            box-sizing: border-box;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            position: relative;
+            overflow-x: hidden;
+        }
+        .intro-section {
+            position: absolute;
+            top: 20px;
+            right: 10px; 
+            width: 230px; 
+            text-align: right;
+            display: flex;
+            flex-direction: column; 
+            align-items: center;
+            background-color: white;
+            padding: 10px;
+            border-radius: 15px;
+            box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+            z-index: 10;
+        }
+        .intro-text {
+            font-size: 1.2em;
+            color: #ff4d88;
+            font-weight: bold;
+        }
+        .intro-image {
+            width: 80px;
+            height: 80px;
+            border-radius: 50%;
+            object-fit: cover;
+            margin-top: 10px;
+        }
+        h1 {
+            font-size: 3.5em;
+            color: #ff4d88;
+            margin: 30px 0;
+            text-shadow: 2px 2px 4px rgba(0,0,0,0.1);
+        }
+        .valentine-img {
+            width: 400px;
+            height: 400px;
+            margin: 30px auto;
+            background-color: #fff;
+            border-radius: 20px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            box-shadow: 0 8px 16px rgba(0,0,0,0.1);
+        }
+        .valentine-img img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            border-radius: 20px;
+        }
+        .side-video-container {
+            position: fixed;
+            left: 20px;
+            top: 50%;
+            transform: translateY(-50%) scale(0);
+            width: 300px;
+            background: white;
+            padding: 10px;
+            border-radius: 15px;
+            box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+            opacity: 0;
+            transition: all 0.5s ease;
+            visibility: hidden;
+        }
+        .side-video-container.visible {
+            opacity: 1;
+            visibility: visible;
+            transform: translateY(-50%) scale(1);
+        }
+        .side-video-container video {
+            width: 100%;
+            border-radius: 10px;
+            display: block;
+        }
+        .buttons {
+            display: flex;
+            justify-content: center;
+            gap: 30px;
+            margin-top: 40px;
+        }
+        button {
+            padding: 20px 40px;
+            font-size: 24px;
+            cursor: pointer;
+            border: none;
+            border-radius: 50px;
+            transition: all 0.3s ease;
+            font-weight: bold;
+            text-transform: uppercase;
+        }
+        #yesBtn {
+            background-color: #ff4d88;
+            color: white;
+            box-shadow: 0 4px 8px rgba(255, 77, 136, 0.3);
+        }
+        #yesBtn:hover {
+            background-color: #ff1a66;
+            transform: translateY(-2px);
+        }
+        #noBtn {
+            background-color: #f2f2f2;
+            color: #666;
+            position: relative;
+            box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+        }
+        #noBtn:hover {
+            background-color: #e6e6e6;
+            transform: translateY(-2px);
+        }
+        @media (max-width: 600px) {
+            h1 {
+                font-size: 2.5em;
+            }
+            .valentine-img {
+                width: 300px;
+                height: 300px;
+            }
+            button {
+                padding: 15px 30px;
+                font-size: 20px;
+            }
+            .intro-section {
+                position: relative;
+                top: 0;
+                right: 0;
+                margin-bottom: 20px;
+            }
+            .side-video-container {
+                display: none;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="intro-section">
+        <div class="intro-text">
+            Salutations Fine Shyt!!<br>
+            The name's Jeremy<br>
+            *tips fedora
+        </div>
+        <img class="intro-image" src="IMG_7088.jpeg" alt="Jeremy">
+    </div>
+
+    <div class="side-video-container">
+        <video controls muted autoplay >
+            <source src="fa441f6a-1992-4afa-9918-9158d3dd2b7a.mp4" type="video/mp4">
+            Your browser does not support the video tag.
+        </video>
+    </div>
+
+    <h1 id="question">Will you be my Valentine?</h1>
+    <div class="valentine-img">
+        <img src="catflower.jpg" alt="Cute Valentine">
+    </div>
+    <div class="buttons">
+        <button id="yesBtn" onclick="sayYes()">Yes</button>
+        <button id="noBtn" onclick="sayNo()">No</button>
+    </div>
+    
+    <script>
+        let noCount = 0;
+        const images = [
+            'catflower.jpg',  // default
+            'sad.jpeg',  // sad
+            'crying-dog.gif',  // pleading
+            'IMG_7583.jpeg'   // happy
+        ];
+
+        function sayNo() {
+            noCount++;
+            if (noCount === 1) {
+                document.getElementById("question").innerText = "Are you being fr?";
+                document.querySelector('.valentine-img img').src = images[1];
+            } else if (noCount === 2) {
+                document.getElementById("question").innerText = "Please be my valentine🥺";
+                document.querySelector('.valentine-img img').src = images[2];
+            } else {
+                let noBtn = document.getElementById("noBtn");
+                let x = Math.random() * (window.innerWidth - 150);
+                let y = Math.random() * (window.innerHeight - 150);
+                noBtn.style.position = "absolute";
+                noBtn.style.left = `${x}px`;
+                noBtn.style.top = `${y}px`;
+            }
+        }
+
+        function shootConfetti() {
+            const count = 200;
+            const defaults = {
+                origin: { y: 0.7 },
+                spread: 90,
+                zIndex: 2000,
+                colors: ['#ff1a66', '#ff4d88', '#ff80aa', '#ffffff']
+            };
+
+            function fire(particleRatio, opts) {
+                confetti({
+                    ...defaults,
+                    ...opts,
+                    particleCount: Math.floor(count * particleRatio)
+                });
+            }
+
+            fire(0.25, {
+                spread: 26,
+                startVelocity: 55
+            });
+            fire(0.2, {
+                spread: 60
+            });
+            fire(0.35, {
+                spread: 100,
+                decay: 0.91,
+                scalar: 0.8
+            });
+            fire(0.1, {
+                spread: 120,
+                startVelocity: 25,
+                decay: 0.92,
+                scalar: 1.2
+            });
+            fire(0.1, {
+                spread: 120,
+                startVelocity: 45
+            });
+        }
+
+        function sayYes() {
+            document.getElementById("question").innerText = "Yay! Can't wait! 💖";
+            document.querySelector('.valentine-img img').src = images[3];
+            document.getElementById("yesBtn").style.display = "none";
+            document.getElementById("noBtn").style.display = "none";
+            
+            // Show and play the side video
+            const videoContainer = document.querySelector('.side-video-container');
+            const video = videoContainer.querySelector('video');
+            videoContainer.classList.add('visible');
+            video.play();
+            
+            // Trigger confetti
+            shootConfetti();
+        }
+    </script>
+</body>
+</html>
